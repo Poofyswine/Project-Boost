@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class collisionManager : MonoBehaviour
 {
     
-    void OnCollisionEnter(Collision other) {    switch (other.gameObject.tag){
+    void OnCollisionEnter(Collision other) {    
+        switch (other.gameObject.tag){
             case "Friendly":
                 Debug.Log("You are on the launch pad");
                 break;
@@ -14,8 +16,14 @@ public class collisionManager : MonoBehaviour
                 Debug.Log("You touched the finish pad");
                 break;
             default:
-                Debug.Log("You Died");
+                reloadScene();
                 break;
         }
     }
+
+    void reloadScene(){
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
+    }
+
 }
