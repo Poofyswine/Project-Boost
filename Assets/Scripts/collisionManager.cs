@@ -13,7 +13,7 @@ public class collisionManager : MonoBehaviour
                 Debug.Log("You touched the fuel powerup");
                 break;
             case "Finish":
-                Debug.Log("You touched the finish pad");
+                LoadNextLevel();
                 break;
             default:
                 reloadScene();
@@ -24,6 +24,17 @@ public class collisionManager : MonoBehaviour
     void reloadScene(){
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
+    }
+
+        void LoadNextLevel(){
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex+1;
+        if(nextSceneIndex == SceneManager.sceneCountInBuildSettings){
+            SceneManager.LoadScene(0);
+        }
+        else{
+            SceneManager.LoadScene(nextSceneIndex);
+        }
     }
 
 }
