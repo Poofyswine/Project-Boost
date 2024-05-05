@@ -7,14 +7,40 @@ public class collisionManager : MonoBehaviour
     [SerializeField] AudioClip crashAudio;
     [SerializeField] AudioClip levelWinAudio;
 
+    [SerializeField] ParticleSystem crashParticles;
+    [SerializeField] ParticleSystem levelWinParticles;
+
     AudioSource audioSource;
+
+    bool isTransitioning = false;
+    bool disableCollisions = false;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
 
+    void Update()
+    {
+        RespondToDebugKeys();
+    }
+
+    private void RespondToDebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            ChangeScene();
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            disableCollisions = !disableCollisions;
+        }
+
+    }
+
     void OnCollisionEnter(Collision other) {    
+        if(isTransitioning || disableCollisions){ return; }
         switch (other.gameObject.tag){
             case "Friendly":
                 Debug.Log("You are on the launch pad");
@@ -34,9 +60,12 @@ public class collisionManager : MonoBehaviour
     
     void StartCrashSequence(){
         // add particle affects
+        isTransitioning = true;
+        audioSource.Stop();
         audioSource.PlayOneShot(crashAudio);
         DisableRocketMovement();
-         Invoke("reloadLevel", 1f);
+        crashParticles.Play();
+        Invoke("reloadLevel", 1f);
 
     }
     void reloadLevel(){
@@ -45,8 +74,11 @@ public class collisionManager : MonoBehaviour
     }
 
         void LoadNextLevel(){
+        isTransitioning = true;
+        audioSource.Stop();
         audioSource.PlayOneShot(levelWinAudio);
         DisableRocketMovement();
+        levelWinParticles.Play();
         Invoke("ChangeScene", SceneChangeDelay);
     }
 

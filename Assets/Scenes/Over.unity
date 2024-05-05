@@ -222,8 +222,8 @@ Transform:
   m_GameObject: {fileID: 490739814}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.34, y: 1.85, z: 0}
-  m_LocalScale: {x: 1.9222401, y: 3.9217, z: 5.8831}
+  m_LocalPosition: {x: -28.76, y: 2.11, z: 0}
+  m_LocalScale: {x: 3.1624694, y: 6.451981, z: 9.678876}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -407,13 +407,18 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.036814515, y: 0.00003113516, z: 0.000845157, w: 0.99932176}
-  m_LocalPosition: {x: -31.7, y: 3, z: -16.36}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.08098365, y: -0.0000062809727, z: 0.0008457074, w: 0.99671507}
+  m_LocalPosition: {x: -29.18, y: 4.42, z: -20.89}
+  m_LocalScale: {x: 1.6236, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 4.22, y: 0.007, z: 0.097}
+  m_LocalEulerAnglesHint: {x: 9.29, y: 0.007, z: 0.098}
+--- !u!198 &1083365964 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8485041102797894243, guid: df88f3d5ea73f124f98b7291ca9a5fea, type: 3}
+  m_PrefabInstance: {fileID: 424487333688724706}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1338755476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -424,7 +429,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6720531364018715552, guid: c84014084598fd7478359efdd2c37efa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.41
+      value: -20.95
       objectReference: {fileID: 0}
     - target: {fileID: 6720531364018715552, guid: c84014084598fd7478359efdd2c37efa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -464,17 +469,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7761476874032118415, guid: c84014084598fd7478359efdd2c37efa, type: 3}
       propertyPath: m_Name
-      value: Landing Pad (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7761476874032118415, guid: c84014084598fd7478359efdd2c37efa, type: 3}
-      propertyPath: m_TagString
-      value: Finish
+      value: Landing Pad
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c84014084598fd7478359efdd2c37efa, type: 3}
+--- !u!198 &2012311257 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8063452026612612427, guid: df88f3d5ea73f124f98b7291ca9a5fea, type: 3}
+  m_PrefabInstance: {fileID: 424487333688724706}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &424487333688724706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -487,13 +493,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocket
       objectReference: {fileID: 0}
+    - target: {fileID: 6913397535604495050, guid: df88f3d5ea73f124f98b7291ca9a5fea, type: 3}
+      propertyPath: crashParticles
+      value: 
+      objectReference: {fileID: 1083365964}
+    - target: {fileID: 6913397535604495050, guid: df88f3d5ea73f124f98b7291ca9a5fea, type: 3}
+      propertyPath: levelWinParticles
+      value: 
+      objectReference: {fileID: 2012311257}
     - target: {fileID: 8124120523212366395, guid: df88f3d5ea73f124f98b7291ca9a5fea, type: 3}
       propertyPath: m_LocalPosition.x
       value: -35.656
       objectReference: {fileID: 0}
     - target: {fileID: 8124120523212366395, guid: df88f3d5ea73f124f98b7291ca9a5fea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.001
+      value: 1.61
       objectReference: {fileID: 0}
     - target: {fileID: 8124120523212366395, guid: df88f3d5ea73f124f98b7291ca9a5fea, type: 3}
       propertyPath: m_LocalPosition.z
@@ -544,10 +558,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Launch Pad
       objectReference: {fileID: 0}
-    - target: {fileID: 1041114629405389366, guid: eadd6c0c77619e24a904ae23a004a922, type: 3}
-      propertyPath: m_TagString
-      value: Friendly
-      objectReference: {fileID: 0}
     - target: {fileID: 8859728288469631389, guid: eadd6c0c77619e24a904ae23a004a922, type: 3}
       propertyPath: m_LocalPosition.x
       value: -35.68
@@ -593,63 +603,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eadd6c0c77619e24a904ae23a004a922, type: 3}
---- !u!1001 &4781349104345257039
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6720531364018715552, guid: c84014084598fd7478359efdd2c37efa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 46.189
-      objectReference: {fileID: 0}
-    - target: {fileID: 6720531364018715552, guid: c84014084598fd7478359efdd2c37efa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6720531364018715552, guid: c84014084598fd7478359efdd2c37efa, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6720531364018715552, guid: c84014084598fd7478359efdd2c37efa, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6720531364018715552, guid: c84014084598fd7478359efdd2c37efa, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6720531364018715552, guid: c84014084598fd7478359efdd2c37efa, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6720531364018715552, guid: c84014084598fd7478359efdd2c37efa, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6720531364018715552, guid: c84014084598fd7478359efdd2c37efa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6720531364018715552, guid: c84014084598fd7478359efdd2c37efa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6720531364018715552, guid: c84014084598fd7478359efdd2c37efa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7761476874032118415, guid: c84014084598fd7478359efdd2c37efa, type: 3}
-      propertyPath: m_Name
-      value: Landing Pad
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c84014084598fd7478359efdd2c37efa, type: 3}
 --- !u!1001 &8598667764026608812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -715,7 +668,6 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 8598667764026608812}
   - {fileID: 4125707956003198294}
-  - {fileID: 4781349104345257039}
   - {fileID: 424487333688724706}
   - {fileID: 490739818}
   - {fileID: 1338755476}

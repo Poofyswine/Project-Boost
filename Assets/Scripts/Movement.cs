@@ -6,10 +6,13 @@ using Debug = UnityEngine.Debug;
 
 public class Movement : MonoBehaviour
 {
-
     [SerializeField] float upForce = 1000f;
     [SerializeField] float rotateForce = 50f;
     [SerializeField] AudioClip mainEngine;
+
+    [SerializeField] ParticleSystem mainEngineParticles;
+    [SerializeField] ParticleSystem boosterleftParticles;
+    [SerializeField] ParticleSystem boosterRightParticles;
 
     Rigidbody rb;
     AudioSource audioSource;
@@ -26,30 +29,80 @@ public class Movement : MonoBehaviour
         ProcessRotate();
     }
 
+    void OnDisable() {
+        boosterleftParticles.Stop();
+        boosterRightParticles.Stop();
+        mainEngineParticles.Stop();
+    }
 
     void ProcessThrust(){
-        if(Input.GetKey(KeyCode.Space)){
-            rb.AddRelativeForce(Vector3.up * upForce * Time.deltaTime);
-            if(!audioSource.isPlaying){
+        if(Input.GetKey(KeyCode.Space))
+        {
+            StartThrusting();
+        }
+        else if(Input.GetKeyUp(KeyCode.Space))
+        {
+            StopThrusting();
+        }
+    }
+
+    void StartThrusting()
+    {
+        rb.AddRelativeForce(Vector3.up * upForce * Time.deltaTime);
+        if (!audioSource.isPlaying)
+        {
             audioSource.PlayOneShot(mainEngine);
-            }
         }
-        else if(Input.GetKeyUp(KeyCode.Space)){
-            audioSource.Stop();
+        if (!mainEngineParticles.isPlaying)
+        {
+            mainEngineParticles.Play();
         }
+    }
+
+        private void StopThrusting()
+    {
+        audioSource.Stop();
+        mainEngineParticles.Stop();
     }
 
     void ProcessRotate(){
         if(Input.GetKey(KeyCode.A))
         {
-            ApplyRotation(rotateForce);
+            RotateLeft();
         }
 
-        else if(Input.GetKey(KeyCode.D)){
-            ApplyRotation(-rotateForce);
+        else if(Input.GetKey(KeyCode.D))
+        {
+            RotateRight();
         }
-        
+
+        else if(Input.GetKeyUp(KeyCode.A)){
+            boosterRightParticles.Stop();
+        }
+
+        else if(Input.GetKeyUp(KeyCode.D)){
+            boosterleftParticles.Stop();
+        }
     }
+
+    void RotateLeft()
+    {
+        ApplyRotation(rotateForce);
+        if (!boosterRightParticles.isPlaying)
+        {
+            boosterRightParticles.Play();
+        }
+    }
+    void RotateRight()
+    {
+        ApplyRotation(-rotateForce);
+        if (!boosterleftParticles.isPlaying)
+        {
+            boosterleftParticles.Play();
+        }
+    }
+
+
 
     void ApplyRotation(float rotationThisFrame)
     {
